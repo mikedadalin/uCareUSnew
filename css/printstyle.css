@@ -1,0 +1,38 @@
+* {
+	-webkit-print-color-adjust: exact;
+	font-family: Arial, 微軟正黑體, Verdana, Segoe UI, Helvetica, sans-serif;
+}
+td {
+	font-size:11.5pt;
+	border-style:solid;
+	border-width: thin;
+	border-collapse: collapse;
+	border-color: #000000;
+}
+.nurseform-table {
+	width:880px;
+}
+
+.nurseform-table td td {
+	border:none;
+}
+
+.content-query {
+	width:880px;
+}
+input {
+	border:none;
+	font-size:11.5pt;
+}
+select {
+	border:none;
+	font-size:11.5pt;
+}
+.title {
+	background-color:#cdcdcd;
+	font-weight: bold;
+}
+.title_s {
+	background-color:#efefef;
+	font-weight: bold;
+}

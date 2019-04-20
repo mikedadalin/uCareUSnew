@@ -1,0 +1,17 @@
+CREATE TABLE `mdsform43`(
+    `no` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`HospNo` MEDIUMINT(6) UNSIGNED ZEROFILL NOT NULL,
+    `date` DATE NOT NULL,
+    `QS0173` ENUM('0','1','9') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS6230` ENUM('0','1') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS6232` ENUM('0','1') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS6234` ENUM('0','1') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS6236` ENUM('0','1') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS2060A` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS2060B` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS2060C` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS2060D` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS2060E` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QS2060Z` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `Qfiller` VARCHAR(128) CHARACTER SET utf8 collate utf8_unicode_ci NULL
+    );

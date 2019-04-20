@@ -1,0 +1,22 @@
+CREATE TABLE `mdsform16`(
+    `no` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`HospNo` MEDIUMINT(6) UNSIGNED ZEROFILL NOT NULL,
+    `date` DATE NOT NULL,
+    `QG0120A` ENUM('0','1','2','3','4','8') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0120B` ENUM('0','1','2','3','8') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0300A` ENUM('0','1','2','8') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0300B` ENUM('0','1','2','8') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0300C` ENUM('0','1','2','8') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0300D` ENUM('0','1','2','8') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0300E` ENUM('0','1','2','8') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0400A` ENUM('0','1','2') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0400B` ENUM('0','1','2') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0600A` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0600B` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0600C` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0600D` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0600Z` ENUM('X') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0900A` ENUM('0','1','9') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QG0900B` ENUM('0','1') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `Qfiller` VARCHAR(128) CHARACTER SET utf8 collate utf8_unicode_ci NULL
+    );

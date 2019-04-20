@@ -1,0 +1,188 @@
+html, body
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: #EEE;
+	height: 100%;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+#container {
+	width: 100%;
+	height: 100%;
+}
+
+.logoshape{
+	 display: block;
+	 position: absolute;
+	 float: left;
+	 top:0px;
+	 left: 0px;
+	 margin: 0;
+	 padding: 0;
+     width: 280px;
+     height: 90px;
+     
+	line-height: 75px;
+	font-family: "Lucida Console", Monaco, monospace;
+	font-weight: 900;
+	font-size: 60px;
+	padding-left: 30px;
+	letter-spacing: 7px;
+	color: rgba(161,161,161,1);
+	text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+     
+     /*background: #117300;*/
+     background: -webkit-linear-gradient(rgba(215,215,215,1), rgba(194,194,194,1)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(215,215,215,1), rgba(194,194,194,1)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(215,215,215,1), rgba(194,194,194,1)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(215,215,215,1), rgba(194,194,194,1)); /* Standard syntax */
+	
+    border-radius: 0 0 90px 0;
+    -moz-border-radius: 0 0 90px 0;
+    -webkit-border-radius: 0 0 90px 0;
+     
+    -webkit-box-shadow: 0px 2px 0px rgba(34,63,117,1), 0px 2px 4px rgba(0,0,0,.7);
+    -moz-box-shadow: 0px 2px 0px rgba(34,63,117,1), 0px 2px 4px rgba(0,0,0,.7);
+    box-shadow: 0px 2px 0px rgba(34,63,117,1), 0px 2px 4px rgba(0,0,0,.7);
+}
+
+.header {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0px;
+	margin-left:auto; 
+	margin-right:auto; 
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	background: -webkit-linear-gradient(rgba(75,131,235,1), rgba(47,88,163,1)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(75,131,235,1), rgba(47,88,163,1)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(75,131,235,1), rgba(47,88,163,1)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(75,131,235,1), rgba(47,88,163,1)); /* Standard syntax */
+	border-bottom: solid 1px #000000;
+	font-family: Tahoma, Geneva, sans-serif
+	z-index = 1;
+}
+
+.header .title {
+display:block;
+color: #FFFFFF;
+font-weight: lighter;
+font-size: 30px;
+margin-left: 340px;
+letter-spacing: 3px;
+text-shadow:
+   -1px -1px 1 #333,  
+    1px -1px 1 #333,
+    -1px 1px 1 #333,
+     1px 1px 1 #333;
+}
+
+#sidebar
+{
+	position: absolute;
+	width: 200px;
+	height: inherit;
+	margin: 0 0 0 0;
+	background-color: #3766BD;/*rgba(47,88,163,1);*/
+	border-right: solid 1px #000000;
+	font-family: Tahoma, Geneva, sans-serif;
+	z-index = -1;
+}
+
+#sidebar ul
+{
+	margin: 90px 0 0 0;
+	padding: 0;
+	border: 0;
+	list-style-type: none;
+	border-top:solid 1px #000000;
+	background-image: url('../img/sidebarbkgnd.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 25%; 
+}
+
+#sidebar ul li
+{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+#sidebar ul li a
+{
+	position: relative;
+	display:block;
+	/*
+	display: flex;
+	align-items: center;
+	display: -webkit-flex;
+	-webkit-align-items: center;
+	display: -moz-box;
+	-moz-box-align: center;*/
+	height: 40px;
+	line-height: 40px;
+	top: 0;
+	padding: 0 0 0 10px;
+	margin: 0;
+	border-bottom: solid 1px rgba(57,83,130,0.9);
+	background: rgba(55,102,189,0.65) no-repeat 0 0;
+	
+}
+
+#sidebar ul li a:hover
+{
+	background: rgba(146,44,189,0.65) no-repeat 0 0;
+}
+
+#sidebar ul li a span
+{
+font-weight: bold;
+font-size: 14px;
+color: #DDD;
+letter-spacing: 2px;
+text-shadow:
+   -1px -1px 1 #111,  
+    1px -1px 1 #111,
+    -1px 1px 1 #111,
+     1px 1px 1 #111;
+}
+
+
+#sidebar ul li a:link, #productnav ul li a:visited
+{
+	text-decoration: none;
+	
+}
+
+#sidebar ul li a:hover, #productnav ul li a:active
+{
+	text-decoration: none;
+}
+
+#footer
+{
+	position: absolute;
+	display: block;
+	bottom: 0;
+	border-top: solid 1px #111111;
+	background-color: #FFFFFF;
+	color: #999999;
+	text-align: center;
+	width: 100%;
+}
+
+#contents
+{
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 100px 30px 50px 230px;
+	overflow: auto;
+	box-sizing: border-box;
+	border: 0px;
+}
+

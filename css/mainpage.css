@@ -1,0 +1,86 @@
+ul.menubuttons
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	list-style-type: none;
+}
+
+ul.menubuttons li
+{
+	padding: 0 auto;
+	width: 800px;
+	margin: 0 auto;
+	border: 0;
+}
+
+ul.menubuttons li a
+{
+	position: relative;
+	display:block;
+	float: left;
+	/*
+	display: flex;
+	align-items: center;
+	display: -webkit-flex;
+	-webkit-align-items: center;
+	display: -moz-box;
+	-moz-box-align: center;*/
+	height: 150px;
+	width: 150px;
+	line-height: 210px;
+	top: 0;
+	padding: 5px;
+	margin: 5px;
+     background: -webkit-linear-gradient(rgba(75,131,235,1), rgba(47,88,163,1)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(75,131,235,1), rgba(47,88,163,1)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(75,131,235,1), rgba(47,88,163,1)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(75,131,235,1), rgba(47,88,163,1)); /* Standard syntax */
+	border: 0px;
+     border-radius: 10px;
+     -moz-border-radius: 10px;
+     -webkit-border-radius: 10px;
+     text-align: center;
+     text-decoration: none;
+     color: white;
+     -webkit-box-shadow: 0px 2px 0px rgba(34,63,117,1), 0px 2px 4px rgba(0,0,0,.7);
+    -moz-box-shadow: 0px 2px 0px rgba(34,63,117,1), 0px 2px 4px rgba(0,0,0,.7);
+    box-shadow: 0px 2px 0px rgba(34,63,117,1), 0px 2px 4px rgba(0,0,0,.7);
+    
+	
+}
+
+ul.menubuttons li a:active
+{
+    background: -webkit-linear-gradient(rgba(52,96,179,1), rgba(55,102,189,1)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(52,96,179,1), rgba(55,102,189,1)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(52,96,179,1), rgba(55,102,189,1)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(52,96,179,1), rgba(55,102,189,1)); /* Standard syntax */
+     -webkit-box-shadow: 0px 0px 0px rgba(34,63,117,1), 0px 0px 2px rgba(0,0,0,.7);
+    -moz-box-shadow: 0px 0px 0px rgba(34,63,117,1), 0px 0px 2px rgba(0,0,0,.7);
+    box-shadow: 0px 0px 0px rgba(34,63,117,1), 0px 0px 2px rgba(0,0,0,.7);
+    top: 2px;
+}
+
+ul.menubuttons li a span
+{
+	display: block;
+	width: inherit;
+	height: inherit;
+	position: relative;
+    background-repeat: no-repeat;
+    background-position: 50% 35%; 
+}
+
+ul.menubuttons li a span.mainpage { background-image: url('../icons/mainpage.png'); }
+ul.menubuttons li a span.nursingcare { background-image: url('../icons/nursingcare.png'); }
+ul.menubuttons li a span.vitalsign { background-image: url('../icons/vitalsigns.png'); }
+ul.menubuttons li a span.socialwork { background-image: url('../icons/socialwork.png'); }
+ul.menubuttons li a span.rehabilitation { background-image: url('../icons/rehabilitation.png'); }
+ul.menubuttons li a span.iorecord { background-image: url('../icons/iorecord.png'); }
+ul.menubuttons li a span.nutrition { background-image: url('../icons/nutrition.png'); }
+ul.menubuttons li a span.medication { background-image: url('../icons/medication.png'); }
+ul.menubuttons li a span.hrmanage { background-image: url('../icons/hrmanage.png'); }
+ul.menubuttons li a span.genmanage { background-image: url('../icons/genmanage.png'); }
+ul.menubuttons li a span.administration { background-image: url('../icons/administration.png'); }
+ul.menubuttons li a span.appraisal { background-image: url('../icons/appraisal.png'); }

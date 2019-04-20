@@ -1,0 +1,134 @@
+* {
+	-webkit-print-color-adjust: exact;
+	font-family: Arial, 微軟正黑體, Verdana, Segoe UI, Helvetica, sans-serif;
+	padding:1px;
+	margin:0px;
+}
+td {
+	font-size:11pt;
+	border-style:solid;
+	border-width: thin;
+	border-collapse: collapse;
+	border-color: #000000;
+	word-break:break-all;
+}
+@page {
+  margin: 10px;
+}
+.nurseform-table {
+	width:960px;
+}
+
+.nurseform-table td td {
+	border:none;
+}
+
+.content-query {
+	width:960px;
+}
+input {
+	border:none;
+	font-size:11pt;
+}
+select {
+	border:none;
+	font-size:11pt;
+}
+.title {
+	background-color:#cdcdcd;
+	font-weight: bold;
+}
+.title_s {
+	background-color:#efefef;
+	font-weight: bold;
+}
+
+.printcol {
+	display: none;
+}
+textarea {
+	font-size:11pt;
+}
+
+button {
+	display:none;
+}
+.noborder td{
+	border:none;
+	font-size:8px;
+	line-height:17px;
+	display:inline-block;
+	
+}
+.noborder tr.bLineT td{
+	border-top:2px solid #000000;
+	float:left;
+}
+.noborder tr.bLineB td{
+	border-bottom:2px solid #000000;		
+}
+.noborder tr.bLineB1 td{
+	border-bottom:1px solid #000000;		
+}
+
+.noborder2 td{
+	border:none;
+	font-size:8px;
+	line-height:14px;
+}
+.noborder2  td.bLineB0{
+	border-top:1px solid #000000;
+	border-left:1px solid #000000;
+	border-bottom:1px solid #000000;
+}
+.noborder2  td.bLineB01{
+	border-right:1px solid #000000;
+}
+
+.noborder2  td.bLineB1{
+	border-left:1px solid #000000;
+	border-bottom:1px solid #000000;
+}
+.noborder2  td.bLineB11{
+	border-right:1px solid #000000;
+}
+.noborder2  td.bLineB2{	
+	/*border-bottom:1px solid #000000;	*/	
+}
+.noborder2  td.bLineB3{	
+	/*border-right:1px solid #000000;	*/	
+}
+
+.noborder3 td{
+	border:none;
+	font-size:8px;
+	line-height:17px;
+	
+}
+.noborder3 td.btL{
+	border-bottom:1px solid #000;line-height:1px;
+}
+.lightLine td{
+	border:1px solid #999;
+}
+.noborderForReceipt td{
+	border:none;
+	font-size:20px;
+	line-height:18px;
+	font-family:"標楷體", "Times New Roman", serif;
+
+}
+.noborderForReceipt span{
+	font-size:18px;
+	line-height:20px;
+	font-family:"標楷體", "Times New Roman", serif;
+}
+
+.rangeL { color:#00f; }
+.rangeH { color:#f00; }
+.rangeH a { color:#f00; }
+.rangeH a:hover { color:#a00; }
+.rangeH a:visited { color:#f00; }
+.pMed4titleTd {
+	border:none;
+}

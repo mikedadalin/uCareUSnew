@@ -1,0 +1,22 @@
+CREATE TABLE `mdsform35`(
+    `no` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`HospNo` MEDIUMINT(6) UNSIGNED ZEROFILL NOT NULL,
+    `date` DATE NOT NULL,
+    `QV0100A` ENUM('01','02','03','04','05','06','99') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100B` ENUM('01','02','03','04','05','06','07','99') CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100C_1` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100C_2` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100C_3` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100C_4` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100C_5` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100C_6` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100C_7` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100C_8` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100D_1` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100D_2` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100E_1` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100E_2` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100F_1` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `QV0100F_2` CHAR(1) CHARACTER SET utf8 collate utf8_unicode_ci NULL,
+    `Qfiller` VARCHAR(128) CHARACTER SET utf8 collate utf8_unicode_ci NULL
+    );

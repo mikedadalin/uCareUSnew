@@ -1,0 +1,42 @@
+canvas {   
+    margin-top: -600px;
+    /*border:1px solid red;*/
+    display: inline-block;
+    position: relative;
+    z-index : 0;
+    left:50px;
+    /*top:20px;*/
+    background-color: rgba(0, 0, 0 ,0);
+} 
+
+#img1 {
+    width: 800px;
+    height: 600px;
+    position: relative;
+    left:50px;
+    /*top:20px;*/
+}
+
+#drawController{
+    display: inline-block;
+    float: left;
+    position: relative;
+    left:20px;
+    /*top:20px;*/
+    width : 40px;
+}
+
+.border_nochoose {
+    border-width: 2px;  
+    border-style: dashed;     
+    border-color: rgba(20, 126, 239, 0.5);  
+    margin-top : 5px;
+}
+
+.border_choose {
+    border-width: 2px;  
+    border-style: dashed;     
+    border-color: rgb(230,69,4);
+    margin-top : 5px;
+}
+

@@ -1,0 +1,351 @@
+
+<!doctype html>
+<html>
+<head>
+  <title>Genogram</title>
+  <!-- Copyright 1998-2013 by Northwoods Software Corporation. -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+  <script type="text/javascript" src="../../js/go.js"></script>
+  <script type="text/javascript" src="../../js/geno.js"></script>
+  <script type="text/javascript" id="code">
+		
+	function newPerson(strPerson, titleIndex, index, son, sonInLaw, daughter, daughterInLaw, grandSon, grandDaughter) {
+		var srcP = strPerson.split(':');
+		var id = srcP[0];
+		var relationCode = srcP[1].split('-')[0];
+		var rank = srcP[1].split('-')[1];
+		var live = srcP[2];
+		var gender = srcP[3];
+		//alert(relationCode);
+		var p = new Array();
+		p['key'] = id;
+		
+		if(typeof gender != 'undefined') {
+			if(gender == '1') p['s'] = "M";
+			else if(gender == '2') p['s'] = "F";
+		}
+		
+		if(typeof rank != 'undefined') p['rank'] = rank;
+		
+		switch(relationCode) {
+		case '5':	// 爸爸
+			p['n'] = '爸爸';
+			titleIndex['爸爸'] = index;
+			if(typeof gender == 'undefined') p['s'] = "M";
+			break;
+		case '9':	// 媽媽
+			p['n'] = '媽媽';
+			titleIndex['媽媽'] = index;
+			if(typeof gender == 'undefined') p['s'] = "F";
+			break;
+		case '12':	// 哥哥
+			p['n'] = '哥哥';
+			if(typeof gender == 'undefined') p['s'] = "M";
+			break;
+		case '13':	// 姊姊
+			p['n'] = '姊姊';
+			if(typeof gender == 'undefined') p['s'] = "F";
+			break;
+		case '14':	// 弟弟
+			p['n'] = '弟弟';
+			if(typeof gender == 'undefined') p['s'] = "M";
+			break;
+		case '15':	// 妹妹
+			p['n'] = '妹妹';
+			if(typeof gender == 'undefined') p['s'] = "F";
+			break;
+		case '16':	// 配偶
+			p['n'] = '配偶';
+			titleIndex['配偶'] = index;
+			break;
+		case '17':	// 兒子
+			p['n'] = '兒子';
+			if(typeof gender == 'undefined') p['s'] = "M";
+			son.push(index);
+			break;
+		case '18':	// 女兒
+			p['n'] = '女兒';
+			if(typeof gender == 'undefined') p['s'] = "F";
+			daughter.push(index);
+			break;
+		case '20':	// 女婿
+			p['n'] = '女婿';
+			if(typeof gender == 'undefined') p['s'] = "M";
+			sonInLaw.push(index);
+			break;
+		case '21':	// 媳婦
+			p['n'] = '媳婦';
+			if(typeof gender == 'undefined') p['s'] = "F";
+			daughterInLaw.push(index);
+			break;
+		case '22':	// 孫子
+			p['n'] = '孫子';
+			if(typeof gender == 'undefined') p['s'] = "M";
+			grandSon.push(index);
+			break;
+		case '23':	// 孫女
+			p['n'] = '孫女';
+			if(typeof gender == 'undefined') p['s'] = "F";
+			grandDaughter.push(index);
+			break;
+		case '26':	// 外傭
+			p['n'] = '外傭';
+			break;
+		case '27':	// 朋友
+			p['n'] = '朋友';
+			break;
+		case '28':	// 安養院
+			p['n'] = '安養院';
+			break;
+		case '29':	// 基金會人員
+			p['n'] = '基金會人員';
+			break;
+		case '30':	// 看護 
+			p['n'] = '看護';
+			break;
+		default:
+			break;
+		}
+		
+		if(live == '0') p['s'] = "S" + p['s'];
+
+		return p;
+	}
+	
+	function connectPeople(people, titleIndex, son, sonInLaw, daughter, daughterInLaw, grandSon, grandDaughter) {
+		for(var i = 0; i < people.length; i++) {
+			var p = people[i];
+			var title = p['n'];
+			switch(title) {
+			case '本人':
+				if(typeof titleIndex['配偶'] != 'undefined') {
+					var mate = people[titleIndex['配偶']];
+					if(p['s'] == "M" || p['s'] == "SM") {
+						p['ux'] = mate['key'];
+					} else {
+						p['vir'] = mate['key'];
+					}
+				}
+				if(typeof titleIndex['爸爸'] != 'undefined') {
+					p['f'] = people[titleIndex['爸爸']]['key'];
+				}
+				if(typeof titleIndex['媽媽'] != 'undefined') {
+					p['m'] = people[titleIndex['媽媽']]['key'];
+				}
+				break;
+			case '爸爸':
+				if(typeof titleIndex['媽媽'] != 'undefined') {
+					p['ux'] = people[titleIndex['媽媽']]['key'];
+				}
+				break;
+			case '媽媽':
+				if(typeof titleIndex['爸爸'] != 'undefined') {
+					p['vir'] = people[titleIndex['爸爸']]['key'];
+				}
+				break;
+			case '哥哥':
+			case '姊姊':
+			case '弟弟':
+			case '妹妹':
+				if(typeof titleIndex['爸爸'] != 'undefined') {
+					p['f'] = people[titleIndex['爸爸']]['key'];
+				}
+				if(typeof titleIndex['媽媽'] != 'undefined') {
+					p['m'] = people[titleIndex['媽媽']]['key'];
+				}
+				break;
+			case '配偶':
+				var mate = people[titleIndex['本人']];
+				if(p['s'] == "M" || p['s'] == "SM") {
+					p['ux'] = mate['key'];
+				} else {
+					p['vir'] = mate['key'];
+				}
+				break;
+			case '兒子':
+				var parent1 = people[titleIndex['本人']];
+				var parent2 = people[titleIndex['配偶']];
+				if(parent1['s'] == "M" || parent1['s'] == "SM")
+					p['f'] = parent1['key'];
+				else if (parent1['s'] == "F" || parent1['s'] == "SF")
+					p['m'] = parent1['key'];
+				if(typeof parent2 != 'undefined') {
+					if(parent2['s'] == "M" || parent2['s'] == "SM")
+						p['f'] = parent2['key'];
+					else if (parent2['s'] == "F" || parent2['s'] == "SF")
+						p['m'] = parent2['key'];
+				}
+				// 媳婦
+				for(var j = 0; j < daughterInLaw.length; j++) {
+					if(people[daughterInLaw[j]]['rank'] == p['rank']) {
+						p['ux'] = people[daughterInLaw[j]]['key'];
+						break;
+					}
+				}
+				break;
+			case '女兒':
+				var parent1 = people[titleIndex['本人']];
+				var parent2 = people[titleIndex['配偶']];
+				if(parent1['s'] == "M" || parent1['s'] == "SM")
+					p['f'] = parent1['key'];
+				else if (parent1['s'] == "F" || parent1['s'] == "SF")
+					p['m'] = parent1['key'];
+				if(typeof parent2 != 'undefined') {
+					if(parent2['s'] == "M" || parent2['s'] == "SM")
+						p['f'] = parent2['key'];
+					else if (parent2['s'] == "F" || parent2['s'] == "SF")
+						p['m'] = parent2['key'];
+				}
+				// 女婿
+				for(var j = 0; j < sonInLaw.length; j++) {
+					if(people[sonInLaw[j]]['rank'] == p['rank']) {
+						p['vir'] = people[sonInLaw[j]]['key'];
+						break;
+					}
+				}
+				break;
+			case '女婿':
+				// 女兒
+				for(var j = 0; j < daughter.length; j++) {
+					if(people[daughter[j]]['rank'] == p['rank']) {
+						p['ux'] = people[daughter[j]]['key'];
+						break;
+					}
+				}
+				break;
+			case '媳婦':
+				// 兒子
+				for(var j = 0; j < son.length; j++) {
+					if(people[son[j]]['rank'] == p['rank']) {
+						p['vir'] = people[son[j]]['key'];
+						break;
+					}
+				}
+				break;
+			case '孫子':
+			case '孫女':
+				var hit = false;
+				for(var j = 0; j < son.length; j++) {
+					if(people[son[j]]['rank'] == p['rank']) {
+						p['f'] = people[son[j]]['key'];
+						for(var k = 0; k < daughterInLaw.length; k++) {
+							if(people[daughterInLaw[k]]['rank'] == p['rank']) {
+								p['m'] = people[daughterInLaw[k]]['key'];
+								break;
+							}
+						}
+						hit = true;
+						break;
+					}
+				}
+				if(!hit) {
+					for(var j = 0; j < daughter.length; j++) {
+						if(people[daughter[j]]['rank'] == p['rank']) {
+							p['m'] = people[daughter[j]]['key'];
+							for(var k = 0; k < sonInLaw.length; k++) {
+								if(people[sonInLaw[k]]['rank'] == p['rank']) {
+									p['f'] = people[sonInLaw[k]]['key'];
+									break;
+								}
+							}
+							hit = true;
+							break;
+						}
+					}
+				}
+				break;
+			case '外傭':
+				break;
+			case '朋友':
+				break;
+			case '安養院':
+				break;
+			case '基金會人員':
+				break;
+			case '看護':
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	
+	function drawTree(str) {
+		// NOTE:
+		// str格式為  (人;)*  (一個人配一個分號在後面)
+		//         人 := key:關係碼[-排行]:存歿[:Gender]
+		//         關係碼 := 5|9| .... | 30 (你給的那些)
+		//		   排行 := 數字
+		//		   存歿 := 0|1  (0是歿, 1是存)
+		//         Gender := 1|2  (1是男生, 2是女生)
+		// 說明如下:
+		// 代碼17,18,20,21要跟一個 - 符號, 在代碼後面, 代表排行, 兒子媳婦/女兒女婿 同排行則代表為夫妻,
+		// 代碼22,23要跟一個 - 符號, 在代碼後面, 代表父母排行
+		// 存歿在第三欄
+		// 性別在第四欄, 配偶, 看護, 安養院人員, 朋友, 外傭 這幾個關係一定要填, 其他是選填,程式會按照傳統男女關係自動帶入預設性別(也可以強制設定性別)
+		
+		//str = '0:16:1:2;1:17-1:1;2:18-2:1;3:12:1;4:5:1:2;5:9:1;6:13:1;7:14:0;8:15:0;9:30:1:1;10:17-3:1;11:18-4:1;12:20-4:1;13:21-3:1;14:22-4:1;15:23-4:1;'; 
+		
+		srcPeople = str.split(';');
+		
+		var people = new Array();
+		var titleIndex = new Array();
+		var son = new Array();
+		var sonInLaw = new Array();
+		var daughter = new Array();
+		var daughterInLaw = new Array();
+		var grandSon = new Array();
+		var grandDaughter = new Array();
+		
+		// 本人
+		var p = new Array();
+		p['key'] = -1;
+		p['n'] = "本人";
+		titleIndex['本人'] = people.length;
+		people.push(p);
+
+		for(var i = 0; i < srcPeople.length - 1; i++) {
+			var p = newPerson(srcPeople[i], titleIndex, i+1, son, sonInLaw, daughter, daughterInLaw, grandSon, grandDaughter);
+			people.push(p);
+		}
+
+		var mateIndex = titleIndex['配偶']
+		if(typeof mateIndex != 'undefined') {
+			if(people[mateIndex]['s'].indexOf('M') >= 0) {
+				people[titleIndex['本人']]['s'] = "SF"; 	// NOTE: Please modify: change "F" to "DF"; 
+			} else if(people[mateIndex]['s'].indexOf('F') >= 0) {
+				people[titleIndex['本人']]['s'] = "SM";	// NOTE: Please modify: change "M" to "DM"; 
+			}
+		}
+		
+		connectPeople(people, titleIndex, son, sonInLaw, daughter, daughterInLaw, grandSon, grandDaughter);		
+		
+		var diagramStr = "[";
+		for(var i = 0; i < people.length; i++) {
+			var p = new Array();
+			if(typeof people[i]['key'] != 'undefined') diagramStr += "{ \"key\":" + people[i]['key'] + ",";
+			if(typeof people[i]['s'] != 'undefined') diagramStr += "\"s\": \"" + people[i]['s'] + "\","; 
+			if(typeof people[i]['m'] != 'undefined') diagramStr += "\"m\":" + people[i]['m'] + ",";
+			if(typeof people[i]['f'] != 'undefined') diagramStr += "\"f\":" + people[i]['f'] + ",";
+			if(typeof people[i]['ux'] != 'undefined') diagramStr += "\"ux\":" + people[i]['ux'] + ",";
+			if(typeof people[i]['vir'] != 'undefined') diagramStr += "\"vir\":" + people[i]['vir'] + ",";
+			if(typeof people[i]['n'] != 'undefined') diagramStr += "\"n\": \"" + people[i]['n'] + "\""; 
+			
+			if(i != people.length - 1) diagramStr += "},";
+			else diagramStr += "}";
+			
+		}
+		diagramStr += "]";
+		//alert(diagramStr);	// NOTE : diagramStr is the final array passed to setupDiagram in string form. 
+		setupDiagram(myDiagram, JSON.parse(diagramStr));
+	}
+
+	
+  </script>
+</head>
+<body onLoad="init(); drawTree('0:16:1:2;1:17-1:1;2:18-2:1;3:12:1;4:5:1;5:9:1;6:13:1;7:14:1;8:15:1;9:30:1:1;10:17-3:1;11:18-4:1;12:20-4:1;13:21-3:1;14:22-4:1;15:23-4:1;');">
+<div id="sample">
+	<div id="myDiagram" style="border: solid 1px blue; width:100%; height:600px"></div>
+</div>
+</body>
+</html>
